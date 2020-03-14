@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Securing Your Pi</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<!-- * * * * * * * * HEADER * * * * * * * * -->
+	<header>
+		<h1>Serving Pi</h1>
+	</header>
+	<!-- * * * * * * * * MAIN * * * * * * * * -->
+	<main>
+		<!-- - - - - - - - - ARTICLE - - - - - - - - -->
+		<article>
+			<h2>Securing Your Pi</h2>
+			<h3>Install Uncomplicated Firewall</h3>
+			<p>Next we will install a basic firewall that will help protect your Pi. For further questions on UFW, here is their <a href="http://manpages.ubuntu.com/manpages/cosmic/en/man8/ufw.8.html" target="_blank">man page</a> at ubuntu.com. Also the site I used to pull some of this information from is on raspberrypi's github website, <a href="https://github.com/raspberrypi/documentation/blob/master/configuration/security.md" target="_blank">"Securing Your Raspberry Pi"</a>.</p>
+			<ol>
+				<li>Type <code>sudo apt install ufw</code> and press Enter, to install UFW.</li>
+				<li>Type <code>sudo ufw enable</code> and press Enter, to start UFW.</li>
+				<li>Type <code>sudo ufw allow ssh</code> and press Enter, to allow ssh traffic through the firewall</li>
+				<li>Type <code>sudo ufw allow sftp</code> and press Enter, to allow secure ftp traffic through the firewall</li>
+				<li>Type <code>sudo ufw allow http</code> and press Enter, to allow unsecure web traffic through the firewall</li>
+				<li>Type <code>sudo ufw allow https</code> and press Enter, to allow secure web traffic through the firewall</li>
+				<li>To see UFW's status, type <code>sudo ufw status</code> and type Enter.</li>
+			</ol>
+			<h3>Install fail2ban</h3>
+			<p>Next we will install a suppliment to the firewall that helps detect intrusions and automatically adds rules to the firewall if it finds security risks.</p>
+			<ol>
+				<li>Type <code>sudo apt install fail2ban</code> and press Enter.</li>
+			</ol>
+			<h3>Setup SSH</h3>
+			<p>Now we can finally get SSH up and running and get rid of all these cables.</p>
+			<ol>
+				<li>at the command prompt type <code>sudo systemctl enable ssh</code> and press Enter</li>
+				<li>next type <code>sudo systemctl start ssh</code> and press Enter.</li>
+				<li>and finally type <code>sudo systemctl status ssh</code> and press Enter, to verify ssh is "active (running)".</li>
+			</ol>
+			<h3 id="ssh_connect">Connect via SSH</h3>
+			<p>Now to connect to your pi from your computer, we need a SSH client. I am using <a href="https://portableapps.com/apps/internet/kitty-portable" target="_blank">Kitty Portable</a>, but find one you like and get it installed. To be able to SSH into your pi, you need to know the IP address of your pi, to do so, at the command prompt, type <code>ifconfig</code>. Look for the "inet xxx.xxx.xxx.xxx" with the x's being numbers that are your ip address and write that down somewhere.</p>
+			<p>Now we are ready to start our SSH client of choice and in the "Host Name (or IP address)" box type your Pi's IP address. In the "Port" box, enter "22". Select the connection type of "SSH" and in "Saved Sessions" box type in "My Raspberry Pi" and click "Save". Now you will see the new session that you saved. Double-click on it. It will notify you of a new certificate and ask you if you want to trust it, click "Yes". Now you should see a prompt asking you for your login, type it in and the password, just like you would on the Pi itself. This is how we will access the Pi from here on.</p>
+			<p>Next, our task is to setup the user accounts that we want. I recommend having one user account without superuser access that is responsible for hosting the web server and another user that is superuser. So I am going to add two new accounts next and remove the original pi account.</p>
+			<ol>
+				<li>To create a new account type <code>sudo adduser yourUsername</code> and press Enter. Replace "yourUsername" with whatever username you pick. You will be prompted to enter your password for the new account twice with other info you can leave blank if you like.</li>
+				<li>To make one account superuser, type <code>sudo adduser yourUsername sudo</code> and press Enter.</li>
+				<li>To verify your account is superuser, log in to your superuser account and type <code>sudo su</code> if it doesn't give you an error than you know you are good. Type exit to leave su mode.</li>
+				<li>Now that you have your own superuser account you can remove the pi account. Type <code>sudo deluser -remove-home pi</code> and press Enter.</li>
+			</ol>
+			<h3>Update Raspbian</h3>
+			<p>You will want to update your operating system files, this may take a while to finish.</p>
+			<ol>
+				<li>Type <code>sudo apt-get update</code> and press Enter.</li>
+				<li>Type <code>sudo apt-get upgrade -y</code> and press Enter.</li>
+			</ol>
+			<h3>Update Raspberry Pi firmware</h3>
+			<p>We need to update the firmware on our Pi with the following command: <code>sudo rpi-update</code>, if it's not installed you will need to use: <code>sudo apt-get install rpi-update</code>, then repeat the <code>sudo rpi-update</code>. This is an important process, you are flashing your pi, something that can brick it if it gets interrupted, so make sure you don't cut the power to your pi during this process.</p>
+			<p>It may ask you to reboot when it is complete with the update. Just type <code>sudo reboot</code>. This will break your SSH session, so you will need to close it and reconnect with a new session after it is restarted. If you notice, when you log in, it shows you your current firmware version where the x's are in "Linux raspberrypi x.xx.xx".</p>
+			<p>Ok, now we can transition into setting up our pi to take on the role of an HTTP server.</p>
+		</article>
+	</main>
+	<!-- * * * * * * * * NAV * * * * * * * * -->
+	<nav>
+		<ul>
+			<li><a href="config_wifi.html">Setting Up the Wifi</a></li>
+			<li><a href="html_setup.html">Installing the Web Server</a></li>
+		</ul>
+	</nav>
+	<!-- * * * * * * * * FOOTER * * * * * * * * -->
+	<footer>
+	</footer>
+</body>
+</html>

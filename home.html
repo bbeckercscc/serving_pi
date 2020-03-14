@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Serving Pi Home</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("img").mouseenter(function(){
+				$("img").css("width", "500px");
+			});
+			$("img").mouseleave(function(){
+				$("img").css("width", "400px");
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+	<!-- * * * * * * * * HEADER * * * * * * * * -->
+	<header>
+		<h1>Serving Pi</h1>
+	</header>
+	<!-- * * * * * * * * MAIN * * * * * * * * -->
+	<main>
+		<script>
+			$("body").css("background-color", "black");
+		</script>
+		<!-- - - - - - - - - ARTICLE - - - - - - - - -->
+		<article>
+			<h2>The Raspberry Pi Zero W</h2>
+			<p>
+			Do you need a basic experimental linux-based web server to play around with at home? Well I have the perfect solution for you! The Raspberry Pi Zero W. As you will see from the specs below, its no power house. But it can get the job done if you're just needing a simple HTML server with FTP access that you are not putting out there on the internet for everyone to use (see <a href="html_setup.html#connect_ftp">Connecting Via FTP</a>).</p>
+			<table>
+				<caption>Raspberry Pi Zero W Specifications</caption>
+					<tr><td>Dimensions</td><td>2.56″ x 1.18″ x 0.20″</td></tr>
+					<tr><td>Weight</td><td>9 grams</td></tr>
+					<tr><td>Processor</td><td>1GHz single-core CPU</td></tr>
+					<tr><td>RAM</td><td>512MB</td></tr>
+					<tr><td>Wireless<br> Connections</td><td>802.11n wireless LAN and Bluetooth 4.1</td></tr>
+					<tr><td>Display Port</td><td>mini-HDMI</td></tr>
+					<tr><td>USB Port</td><td>USB On-The-Go port</td></tr>
+					<tr><td>Power Port</td><td>USB On-The-Go ports</td></tr>
+					<tr><td>Recommended<br>Power Supply</td><td>1.2 amps</td></tr>
+					<tr><td>Typical bare-board active<br>current consumption</td><td>150 mA</td></tr>
+			</table>
+			<h3>Low Power Consumption</h3>
+			<p>
+			It is a very compact little guy that runs off of a Wifi connection, and uses an insignificant amount of power at only about 1 watt when its active.  Looking at the power consumption of a typical computer easily being close to 100 watts, the Raspberry Pi is much cheaper solution for an experimental server, a huge savings if left on all the time.</p>
+			<h3>It's Small!</h3>
+			<picture class="flright brad">
+				<img src="img/pi_zero_w_in_case.jpg" alt="Raspberry Pi Zero W in case" title="Raspberry Pi Zero W in case">
+			</picture>
+			<p>
+			This little guy, in the case, only takes up 0.5 X 1.5 X 3.2 inches. That's a wonderfully insignificant amount of space in your already cramped office! Once you have it all setup, and can SSH into it from any computer on the network (see <a href="security.html#ssh_connect">Connect Via SSH</a>), all you need is a power cable running to it. That's less space than your phone plugged into the charger.</p>
+			<h3>It's Portable</h3>
+			<p>
+			Since it only uses about one watt of power when it is active, you could run it off of a battery pack quite easily. If you would like to take it to work or school with you. The only other consideration would be that you have a wifi router with you to access it from your laptop. And you would probably want to configure it at home for any other wifi passwords that it may need (see <a href="config_wifi.html#wifi_setup">Configuring The Wi-fi</a>), unless you want to drag the other equipment with you to be able to connect to it directly.</p>
+			<h3>Its Cheap</h3>
+			<p>
+			The other nice thing about it is it is really cheap. Micro Center has a kit for $12.48 currently that includes the Pi Zero W, a 16 GB microSD card, and a case to protect it. You will still need a power supply, and a few things during setup only. A mini-HDMI to HDMI cable and a HDMI monitor, a mini-USB hub or adapter to connect your keyboard, and the keyboard of course (no mouse is required as we are only installing a command line operating system to keep it more efficient). Current pricing for it all is less than $50 if you already have a keyboard and monitor you can use during setup.</p>
+			<h3>Recommended Parts List</h3>
+			<p>
+			So now that I have you convinced, lets go build this! These are the parts I found, but you can get them wherever you like.</p>
+			<ul>
+				<li><a href="https://www.microcenter.com/product/486575/Zero_W?src=raspberrypi" target="_blank">Micro Center's Frequently Bought Together Combo</a> (Raspberry Pi Zero W, 16 GB SD Card, Pi Zero Case)</li>
+				<li><a href="https://www.microcenter.com/product/485060/mini-hdmi-male-to-hdmi-male-to--cable-w--ethernet-6-ft---black" target="_blank">Micro Center's Mini-HDMI Male to HDMI Male Cable</a></li>
+				<li><a href="https://www.microcenter.com/product/461596/25amp-51v-switching-power-supply-for-raspberry-pi-b-with-built-in-4ft-micro-usb-cable" target="_blank">5 Volt, 1.2 Amp or greater (2.5A) Power Supply</a></li>
+				<li><a href="https://www.microcenter.com/product/474403/usb-mini-hub-with-power-switch" target="_blank">USB Mini Hub</a> for your keyboard</li>
+				<li>HDMI Monitor</li>
+				<li>USB Keyboard</li>
+			</ul>
+		</article>
+	</main>
+	<!-- * * * * * * * * NAV * * * * * * * * -->
+	<nav class="clearfix">
+		<ul>
+			<li><a href="sd_setup.html">Installing Raspbian</a></li>
+		</ul>
+	</nav>
+	<!-- * * * * * * * * FOOTER * * * * * * * * -->
+	<footer class="clearfix">
+	</footer>
+</body>
+</html>

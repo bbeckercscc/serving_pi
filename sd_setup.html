@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Installing Raspbian</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<!-- * * * * * * * * HEADER * * * * * * * * -->
+	<header>
+		<h1>Serving Pi</h1>
+	</header>
+	<!-- * * * * * * * * MAIN * * * * * * * * -->
+	<main>
+		<!-- - - - - - - - - ARTICLE - - - - - - - - -->
+		<article>
+			<h2>Installing Raspbian</h2>
+			<p>Once you have all your hardware, it's time to get your Pi in the oven. For starters there are some downloads you need to get going. I'm going to show you how to setup your SD card using a Windows operating system.</p>
+			<ul>
+				<li><a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank">Raspbian Lite (currently Stretch Lite) - the OS for your Raspberry Pi</a></li>
+				<li><a href="https://www.sdcard.org/downloads/index.html" target="_blank">SD Memory Card Formatter - to format your SD card</a></li>
+				<li><a href="https://rufus.ie/" target="_blank">Rufus - to create your bootable SD card</a></li>
+			</ul>
+			<h3>SD Card Setup</h3>
+			<ol>
+				<li>The first thing we need to do is install the SD Card Formatter</li>
+				<li>Open the SD Card Formatter and insert your SD card into your computer</li>
+				<li>Format your card with the default settings (Quick format)</li>
+			</ol>
+			<picture class="cntr">
+				<img src="img/sd_formatter.jpg" alt="SD Formatter screen" title="SD Formatter screen">
+			</picture>
+			<ol>
+				<li value=4>Next, install Rufus (if you need to, I went with the portable version you don't need to install) and open it</li>
+				<li>Select your device and the .img file you downloaded with the Raspbian Lite in it, file system will need to be FAT, and it takes a long time to check the device for bad blocks, if you want to do it, it's your time not mine. Click "Start".</li>
+			</ol>
+			<picture class="cntr">
+				<img src="img/rufus.jpg" alt="Rufus screen" title="Rufus screen">
+			</picture>
+			<ol>
+				<li value=6>When that is complete, you are all finished in Windows, you just need to eject your SD card and put it in your Pi and get it all hooked up and ready to fire up.</li>
+			</ol>
+			<h3>Starting it up</h3>
+			<p>
+			So once you get your SD card in the Pi, all you need to do is plug in your keyboard, monitor, and power supply and turn on the power. You will see it booting up with a bunch of text on the screen. When it gets to asking for the login, type in <code>pi</code> for the login, and <code>raspberry</code> for the username. That it, you are looking at your new Pi operating system. Next to get this baby on Wifi so we can access it from our computer.</p>
+		</article>
+	</main>
+	<!-- * * * * * * * * NAV * * * * * * * * -->
+	<nav>
+		<ul>
+			<li><a href="home.html">Back to the Beginning</a></li>
+			<li><a href="config_wifi.html">Setting Up the Wifi</a></li>
+		</ul>
+	</nav>
+	<!-- * * * * * * * * FOOTER * * * * * * * * -->
+	<footer>
+	</footer>
+</body>
+</html>

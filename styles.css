@@ -1,0 +1,268 @@
+﻿/* -=-=-=-=-=-=-=-=- CONTAINERS -=-=-=-=-=-=-=-=- */
+
+* {  box-sizing: border-box; }
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	max-width: 1280px;
+}
+
+header {
+	display: block;
+	text-align: center;
+	font-size: 2em;
+	padding: 5px;
+	margin: 0;
+}
+@media only screen and (min-width: 700px) {
+	header {
+		background-image: url(img/pie_slice.png);
+		background-repeat: no-repeat;
+		background-position: 50px center;
+		background-size: 125px;
+	}
+}
+@media only screen and (min-width: 1000px) {
+	header {
+		background-image: url(img/pie_slice.png);
+		background-repeat: no-repeat;
+		background-position: 50px center;
+		background-size: auto;
+	}
+}
+
+article {
+	display: block;
+	overflow: auto;
+	padding: 1em 2em;
+	margin: 0;
+}
+@media only screen and (max-width: 625px) {
+	article {
+		padding: .5em .5em;
+	}
+}
+nav {
+	display: block;
+	overflow: auto;
+	padding: 10px;
+	text-align: center;
+}
+footer {
+	display: block;
+	text-align: center;
+	padding: 15px;
+	margin: 0;
+}
+nav ul { padding: 0; }
+nav li {
+		display: inline-block;
+		list-style-type: none;
+		font-size: 1.3em;
+		padding: 5px 20px;
+		margin: 10px;
+		border: .2em solid;
+		border-radius: 10px;
+}
+a {
+	text-decoration: none;
+}
+
+img {
+	padding: 6em;
+	max-width: 100%;
+}
+
+/* -=-=-=-=-=-=-=-=- TEXT -=-=-=-=-=-=-=-=- */
+
+header h1 {
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+	font-size: 2.6em;
+	letter-spacing: .08em;
+	padding: 35px;
+	margin: 0;
+	font-variant: small-caps;
+}
+@media only screen and (max-width: 1000px) {
+	header h1 { font-size: 1.8em; }
+}
+h2, h3 {
+	margin: 2em 0 1em 0;
+}
+article h1, h2, h3, h4, caption, nav li {
+	font-family: "Times New Roman", Times, serif;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
+
+h5, h6, p, li, td {
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: .04em;
+}
+p, a, li {
+	line-height: 1.4em;
+	letter-spacing: .04em;
+}
+code {
+	font-size: 1.3em;
+}
+table {
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+table caption {
+	font-weight: bold;
+	font-size: 1.3em;
+}
+table td, table th {
+	border: 1px solid #433;
+	padding: 4px;
+	}
+/* -=-=-=-=-=-=-=-=- Positioning -=-=-=-=-=-=-=-=- */
+.flright img {
+	display: block;
+	float: right;
+	padding: 0;
+	margin: 0 2% 2em 3%;
+}
+.brad img {
+	border-radius: 3em;
+}
+@media only screen and (max-width: 750px) {
+	.flright img {
+		float:none;
+		margin: 0 auto 1em auto;
+	}
+}
+.cntr img {
+	display: block;
+	padding: 0;
+	margin: 1.5em auto;
+}
+.fblock {
+	display: inline-block;
+	float: left;
+}
+form {
+	display: block;
+	width: auto;
+	float: left;
+	text-align: left;
+	margin: 0 0 20px 1%;
+}
+@media only screen and (max-width: 1000px) {
+	form {
+		float: none;
+		margin: 0 auto 30px;
+		width: 356px;
+	}
+}
+
+label {
+	padding-left: 0.3em;
+	margin-bottom: 1em;
+}
+#firstname, #lastname {
+	width: 12em;
+}
+#email {
+	width: 25em;
+}
+#message {
+	width: 600px;
+	height: 212px;
+}
+@media only screen and (max-width: 1270px) {
+	#message { width: 500px; }
+}
+@media only screen and (max-width: 1170px) {
+	#message { width: 420px; }
+}
+@media only screen and (max-width: 1080px) {
+	#message { width: 340px; }
+}
+.submt {
+	display: block;
+	float: right;
+}
+.fblock, .submt { padding: 0 16px 16px 0; }
+.clear::after {
+	clear: both;
+}
+.clearl {
+	clear: left;
+}
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* -=-=-=-=-=-=-=-=- COLORS -=-=-=-=-=-=-=-=- */
+
+body {
+	background: hsl(0,35%,16%);
+	color: #DDD;
+}
+
+header {
+	background-color: hsl(0,10%,2%);
+	color: hsl(0,35%,32%);
+}
+
+article {
+	background: hsl(0,35%,8%);
+	color: hsl(0,16%,85%);
+}
+
+article h1, h2, h3, h4, caption {
+	color: hsl(0,25%,50%);
+}
+
+code {
+	color: hsl(0,25%,70%);
+}
+
+body a, body a:link, body a:visited { color: hsl(90,30%,30%); }
+body a:hover { color: hsl(90,30%,20%); }
+body a:active { color: hsl(90,30%,20%); }
+
+form input, textarea {
+	background: hsl(0,35%,8%);
+	color: hsl(0,16%,85%);
+}
+
+nav {
+	background: hsl(0,10%,2%);
+}
+
+nav li {
+	background: hsl(0,35%,8%);
+	border-color: hsl(0,35%,15%);
+}
+
+footer {
+	background: hsl(0,10%,2%);
+}
+
+@media only screen and (max-width: 500px) {
+	header, nav, footer {
+		background-color: hsl(0,35%,35%);
+		color: hsl(0,35%,0%);
+	}
+	article, form input, textarea {
+		background-color: hsl(0,35%,85%);
+		color: hsl(0,16%,0%);
+		border: 1px solid black;
+	}
+	article h1, h2, h3, h4, caption { color: hsl(0,25%,0%); }
+	code { color: hsl(0,25%,40%); }
+	nav li { background-color: hsl(0,35%,80%); }
+	body a, body a:link, body a:visited, body a:hover, body a:active { color: hsl(90,100%,18%); }
+	.mdis img { display: none; }
+	label { display: none; }
+	input::placeholder { color: #000; }
+}

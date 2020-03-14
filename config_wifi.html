@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Configuring Your Wifi</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<!-- * * * * * * * * HEADER * * * * * * * * -->
+	<header>
+		<h1>Serving Pi</h1>
+	</header>
+	<!-- * * * * * * * * MAIN * * * * * * * * -->
+	<main>
+		<!-- - - - - - - - - ARTICLE - - - - - - - - -->
+		<article>
+			<h2>Configuring the Wi-fi</h2>
+			<p>
+			Now we have to get our hands covered in flour. Here's the fun part, or the challenging part. We will start by typing <code>sudo raspi-config</code> and press Enter. You will see the "Raspberry Pi Software Configuration Tool" come up. This is the easiest way to change some settings, so we will start here.</p>
+			<picture class="cntr">
+				<img src="img/raspi_config.jpg" alt="Raspi-Config screen" title="Raspi-Config screen">
+			</picture>
+			<h3>Expand Your Filesystem</h3>
+			<p>We need to have Raspian expand to use all of the SD card, otherwise it only is able to use a fraction of the drive's capacity.</p>
+			<ol>
+				<li>Go down to "Advanced Options" and press Enter.</li>
+				<li>At the top of the list it should say "Expand Filesystem", select and press Enter</li>
+				<li>It will give you a screen saying "Root parition has been resized. The filesystem will be enlarged upon the next reboot". Press Enter to go back to the main configuration menu.</li>
+			</ol>
+			<h3>Configuring The Pi For Your Locale</h3>
+			<p>We have to start by configuring the locale so that our keyboard works properly, if you go with the defaults, from my experience, you won't get your wi-fi password entered correctly because your keyboard isn't properly configured.</p>
+			<ol>
+				<li>Start by using your arrow key to go down to "Localisation Options" and press Enter</li>
+				<li>then "Change Locale" and press Enter</li>
+				<li>next you will see a long list of options, which the Space Bar will select or deselect, deselect the "en_GB.UTF-8 UTF-8" and select "en_US.UTF-8 UTF-8" then press the Tab key to highlight "OK" and press Enter</li>
+				<li>You will see the Configuring Locales options pop up next and arrow down to the "en_US.UTF-8" and press Enter. After a bit you will be back at the main menu again.</li>
+				<li>Go back to the "Localisation Options" and press Enter and then select "Change Timezone" and press Enter.</li>
+				<li>The "Configuring tzdata" configuration pops up and you will want to select "US" and press Enter.</li>
+				<li>Next it asks you for the time zone you are in, select the appropriate one for your location and press Enter.</li>
+				<li>Go back to the "Localisation Options" and select "Change Keyboard Layout" and press Enter.</li>
+				<li>The "Configuring keyboard-configuration" pops up and you will want to select "Generic 101-key PC" (unless you have a more  appropriate selection for your keyboard) and press Enter.</li>
+				<li>Next it asks your for the Keyboard Layout, select "Other" and press Enter.</li>
+				<li>Select "English (US)" and press Enter, and again "English (US)" and Enter, and "The default for the keyboard layout" and Enter, and "No compose key" and Enter.</li>
+				<li>One final time, go back to the "Localisation Options" and press Enter. Go down to "Change Wi-fi Coutnry" and press Enter. Scroll down to "US United States" and press Enter, and then Enter again to finish.</li>
+			</ol>
+			<h3 id="wifi_setup">Configuring The Wi-fi</h3>
+			<p>The next task is to get online.</p>
+			<ol>
+				<li>Still in the raspi-config tool, select "Network Options" and press Enter. Select Wi-fi and press Enter.</li>
+				<li>Enter your network's SSID and press Enter.</li>
+				<li>Enter your network's password and press Enter, hit the Esc key to exit to the command prompt.</li>
+				<li>To verify you are connected to the internet, at the command prompt, type <code>ping -c4 google.com</code>. You should see a few successful pings with response times.</li>
+			</ol>
+			<p>You did it! Your pi is now online! For further reading on setting up your Wi-fi here is a couple links I used to help me figure it out from <a href="https://lb.raspberrypi.org/forums/viewtopic.php?t=203206" target="_blank">raspberrypi.org's forums</a> and raspberrypi's <a href="https://github.com/raspberrypi/documentation/blob/master/configuration/wireless/wireless-cli.md" target="_blank">github</a> documentation. Next lets do some tweaks to secure our Pi and configure it to allow SSH, a way we can access it from our regular computer and do away with all the extra hookups.</p>
+		</article>
+	</main>
+	<!-- * * * * * * * * NAV * * * * * * * * -->
+	<nav>
+		<ul>
+			<li><a href="sd_setup.html">Installing Raspbian</a></li>
+			<li><a href="security.html">Securing Your Pi</a></li>
+		</ul>
+	</nav>
+	<!-- * * * * * * * * FOOTER * * * * * * * * -->
+	<footer>
+	</footer>
+</body>
+</html>

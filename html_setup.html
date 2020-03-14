@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Installing Web Server</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+	<!-- * * * * * * * * HEADER * * * * * * * * -->
+	<header>
+		<h1>Serving Pi</h1>
+	</header>
+	<!-- * * * * * * * * MAIN * * * * * * * * -->
+	<main>
+		<!-- - - - - - - - - ARTICLE - - - - - - - - -->
+		<article>
+			<h2>Installing the Web Server</h2>
+			<p>Ok, lets do this! Almost finished. We are going to install "nginx" a lighter version of apache.</p>
+			<ol>
+			<li>Type <code>sudo apt-get install nginx</code> and press Enter.</li>
+			<li>Now we have a web server, go to a internet browser and type in the ip address of your pi and press Enter. You should see a "Welcome to nginx!" page. Now we need to be able to access it via sftp so that we can change the website from our computer.</li>
+			</ol>
+			<h3>Installing the FTP Server</h3>
+			<ol>
+			<li>Type <code>sudo apt install vsftpd</code> and press Enter.</li>
+			<li>Type <code>cd /etc</code> and press Enter.</li>
+			<li>Type <code>sudo cp vsftpd.conf vsftpd.conf.bak</code> and press Enter. This is backing up our configuration in case we mess it up.</li>
+			<li>Type <code>sudo nano vsftpd.conf</code> and press Enter. This is an editor that will allow us to modify this configuration file. Nano has some wierd keyboard shortcuts for someone who is not used to them, but just use your page up/down keys and your arrow keys and it will get you by for now. Do the following modifications:
+				<ol>
+					<li>find "local_enable=YES" and put a "#" in front of it (this is how you comment lines out of the configuration).</li>
+					<li>also comment out "ssl_enable=NO"</li>
+				<li>go to the end of the file and hit Enter a few times to give some space and then enter <code># CUSTOM</code> this is going to be where we are going to put our modifications so that they are more easily found and adjusted in the future</li>
+				<li>on the next line enter <code>ssl_enable=YES</code></li>
+				<li>and on the next line: <code>local_enable=YES</code></li>
+				<li>and on the next line: <code>chroot_local_user=YES</code></li>
+				<li>and on the next line: <code>local_root=/var/www</code></li>
+				<li>and on the next line: <code>user_sub_token=<wbr>yourNonSuperuserUser</code>, note the yourNonSuperuserUser needs to be substituted with your username.</li>
+				<li>and on the next line: <code>write_enable=YES</code></li>
+				<li>and on the next line: <code>local_umask=002</code></li>
+				<li>and finaly on the next line finish with: <code>allow_writeable_chroot=YES</code></li>
+				<li>Save your changes by holding down [CTRL] and [X] and then when prompted to save type "Y" to confirm to save your changes and then press Enter to confirm the name with no changes</li>
+				</ol>
+			</li>
+			<li>Back at the command prompt type <code>sudo service vsftpd status</code> and press Enter to verify the status of vsftpd. You should see that it is "active (running)"</li>
+			<li>Now we need to add our non-superuser to the "www-data" group. Type <code>sudo usermod -a -G www-data yourNonSuperuserUser</code> and press Enter.</li>
+			<li>And we will change the home directory to the /var/www folder by typing <code>sudo usermod -m -d /var/www yourNonSuperuserUser</code> and press Enter.</li>
+			<li>And we will give it ownership of the /var/www folder by typing <code>sudo chown -R www-data:www-data /var/www</code> and press Enter.</li>
+			<li>And we will change the permissions slightly on the /var/www folder by typing <code>sudo chmod -R 775 /var/www</code> and press Enter.</li>
+			<li>Now we are ready to restart the service and apply our changes by typing <code>sudo service vsftpd restart</code> and press Enter.</li>
+			<li>To once again verify the status of vsftpd type <code>sudo service vsftpd status</code> and press Enter and verify that it is "active (running)"</li>
+			</ol>
+			<h3 id="connect_ftp">Connecting Via FTP</h3>
+			<p>Now you can open your FTP program and setup your new account. I use <a href="https://filezilla-project.org/" target="_blank">FileZilla</a> but use what works for you. You will want to use your IP address and port 22 and use the yourNonSuperuserUser username for your login and password.</p>
+			<p>For further reading on setting up the FTP server, here is a link to <a href="https://pchelp.ricmedia.com/setup-lamp-server-raspberry-pi-3-complete-diy-guide/3/" target="_blank">ricmedia.com</a>'s guide.</p>
+			<p>Happy hosting! The Pi serves quite nicely doesn't it?</p>
+			<p><br></p>
+			<form>
+				<div class="fblock">
+					<label for="firstname">First Name:</label><br>
+					<input type="text" name="firstname" id="firstname" placeholder="  First Name">
+				</div>
+
+				<div class="fblock">
+					<label for="lastname">Last Name:</label><br>
+					<input type="text" name="lastname" id="lastname" placeholder="  Last Name">
+				</div>
+				<div class="fblock clearl">
+					<label for="email">Email Address:</label><br>
+					<input type="email" name="email" id="email" placeholder="  Email Address">
+				</div>
+				<div class="fblock clearl">
+					<label for="message">Comments:</label><br>
+					<textarea name="message" id="message" placeholder=" Please leave your questions, comments, or concerns."></textarea>
+				</div>
+				<div class="submt clearl">
+					<input type="submit" value="Submit"> &nbsp; <input type="reset">
+				</div>
+			</form>
+			<picture class="cntr brad mdis">
+				<img src="img/pi.jpg" alt="Pie on a plate" title="Pie on a plate">
+			</picture>
+		</article>
+	</main>
+	<!-- * * * * * * * * NAV * * * * * * * * -->
+	<nav>
+		<ul>
+			<li><a href="security.html">Securing Your Pi</a></li>
+			<li><a href="home.html">Back to the Beginning</a></li>
+		</ul>
+	</nav>
+	<!-- * * * * * * * * FOOTER * * * * * * * * -->
+	<footer>
+	</footer>
+</body>
+</html>
